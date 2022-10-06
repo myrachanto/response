@@ -54,7 +54,10 @@ and as such I
 
 span 3 goroutines each perfomming 10 calls https://jsonplaceholder.typicode.com/todos/1 and for better results
 i used the modulas of 4 of each goroutines calls to make an api call with an invalid url so as to obtain 404 for better array results
+and the resuls are:
 
-again those results are displayed at 
+map[200:24 404:6]
+
+again those tests are displayed at 
 
 https://github.com/myrachanto/loader/actions on the test part of the github actions
