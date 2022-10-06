@@ -15,6 +15,7 @@ var (
 type LoadControllerInterface interface {
 	Loader(c echo.Context) error
 	GetInfo(c echo.Context) error
+	// Tester(c echo.Context) error
 }
 
 type loadController struct {
@@ -41,3 +42,11 @@ func (controller loadController) GetInfo(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, loads)
 }
+// func (controller loadController) Tester(c echo.Context) error {
+// 	loads, err3 := controller.service.Tester()
+// 	if err3 != nil {
+// 		return c.JSON(err3.Code(), err3)
+// 	}
+// 	return c.JSON(http.StatusOK, loads)
+// }
+

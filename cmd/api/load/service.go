@@ -11,6 +11,7 @@ var (
 type LoadServiceInterface interface {
 	Loader(url string) (*Load, httperrors.HttpErr)
 	GetInfo() (map[int]int, httperrors.HttpErr)
+	// Tester() (string, httperrors.HttpErr)
 }
 type loadService struct {
 	repo LoadRepoInterface
@@ -30,3 +31,7 @@ func (service *loadService) GetInfo() (map[int]int, httperrors.HttpErr) {
 	loads, err := service.repo.GetInfo()
 	return loads, err
 }
+// func (service *loadService) Tester() (string, httperrors.HttpErr) {
+// 	loads, err := service.repo.Tester()
+// 	return loads, err
+// }

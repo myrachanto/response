@@ -26,6 +26,7 @@ func ApiLoader() {
 	}
 	api.GET("/load", loader.Loader).Name = "get-load"
 	api.GET("/loads", loader.GetInfo).Name = "get-info"
+	// api.GET("/tester", loader.GetInfo).Name = "tester"
 
 	PORT := os.Getenv("PORT")
 	e.Logger.Fatal(e.Start(PORT))

@@ -20,6 +20,7 @@ type LoadRepoInterface interface {
 	Loader(url string) (*Load, httperrors.HttpErr)
 	GetInfo() (map[int]int, httperrors.HttpErr)
 	loading(url string) *Load
+	// Tester() (string, httperrors.HttpErr)
 }
 type Response struct {
 	UserId    int    `json:"userId,omitempty"`
@@ -43,6 +44,7 @@ func (r *loadrepository) Loader(url string) (*Load, httperrors.HttpErr) {
 func (r *loadrepository) GetInfo() (map[int]int, httperrors.HttpErr) {
 	return Store, nil
 }
+
 
 func (r *loadrepository) loading(url string) *Load {
 	l := &Load{}
@@ -84,3 +86,36 @@ func (r *loadrepository) loading(url string) *Load {
 	locker.Unlock()
 	return l
 }
+
+// func (r *loadrepository) Tester() (string, httperrors.HttpErr) {
+// 	serv := NewloadService(NewloadRepo())
+// 	Wg.Add(routinCalls)
+// 	mod4 := 0
+// 	for i := 1; i <= routinCalls; i++ {
+// 		go func(i int) {
+// 			for j := 1; j <= RacerNumberPerRoutineCall; j++ {
+// 				fmt.Println("Calling Goroutine ---", i)
+// 				if j%4 == 0 {
+// 					locker.Lock()
+// 					mod4++
+// 					locker.Unlock()
+// 					//wrong url to get 401
+// 					_ = r.loading("https://jsonplaceholder.typicode.com/todos/1s")
+// 				} else {
+// 					_ = r.loading("")
+// 				}
+// 			}
+// 			Wg.Done()
+// 		}(i)
+// 	}
+// 	Wg.Wait()
+// 	res, _ := serv.GetInfo()
+// 	fmt.Println("resp is", res, mod4)
+// 	if len(res) == 0 {
+// 		fmt.Println("the length of the response must be greator than 0")
+// 	}
+// 	if res[404] != mod4 {
+// 		fmt.Println("the length of the failed request is of 404", mod4)
+// 	}
+// 	return "goroutines spanned", nil
+// }
