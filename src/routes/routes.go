@@ -7,7 +7,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/myrachanto/Loader/cmd/api/load"
+	"github.com/myrachanto/respon/src/api/load"
 )
 
 func ApiLoader() {
@@ -24,9 +24,7 @@ func ApiLoader() {
 	if err != nil {
 		log.Fatal("Error loading .env file in routes")
 	}
-	api.GET("/load", loader.Loader).Name = "get-load"
-	api.GET("/loads", loader.GetInfo).Name = "get-info"
-	// api.GET("/tester", loader.GetInfo).Name = "tester"
+	api.GET("/getURL", loader.GetURL).Name = "get-url"
 
 	PORT := os.Getenv("PORT")
 	e.Logger.Fatal(e.Start(PORT))

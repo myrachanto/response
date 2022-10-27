@@ -1,4 +1,4 @@
-# Load test
+# Response programe
 I used Domain Driven Design (DDD) for this project. it's a fantastic architecture that focuses on business logic.
 
 The business domain doesn't care what framework you use for controllers or the databases to which the repository is hooked.
@@ -30,34 +30,10 @@ then you can navigate to the project folder run "go run main.go"
 
 "I am assuming you have golang already set in you machine!"
 
-## apis
-I have build two apis fo this load test
+# usage  
+## make sure "," separates the urls
+go run . getulr -urls "https://www.google.com,https://www.chantosweb.co.ke"
 
-http://localhost:3500/api/load?url="https://jsonplaceholder.typicode.com/todos/1"
+ ### or
+ go run main getulr -urls "https://www.google.com,https://www.chantosweb.co.ke"
 
-which can also work as
-
-http://localhost:3500/api/load -- makes the query
-
-this works because if the url passed as query parameter is empty then the url will be assinged to https://jsonplaceholder.typicode.com/todos/1 in the code
-
-the other is 
-
-http://localhost:3500/api/loads --gets the results 
-
-this api get the store data in array
-
-## Testing Thread safe
-so I did write a test to test how thread safe the apis are or better yet how thread safe the logic is
-
-and as such I
-
-span 3 goroutines each perfomming 10 calls https://jsonplaceholder.typicode.com/todos/1 and for better results
-i used the modulas of 4 of each goroutines calls to make an api call with an invalid url so as to obtain 404 for better array results
-and the resuls are:
-
-map[200:24 404:6]
-
-again those tests are displayed at 
-
-https://github.com/myrachanto/loader/actions on the test part of the github actions

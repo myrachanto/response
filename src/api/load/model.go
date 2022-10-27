@@ -5,12 +5,13 @@ import (
 )
 
 type Load struct {
-	ResponseCode int `json:"response_code"`
+	Url  string `json:"url,omitempty"`
+	Size int    `json:"size,omitempty"`
 }
 
 func (l Load) Validate() httperrors.HttpErr {
-	if l.ResponseCode == 0 {
-		return httperrors.NewBadRequestError("Response code!")
+	if l.Url == "" {
+		return httperrors.NewBadRequestError("Url must not be empty")
 	}
 	return nil
 }

@@ -2,14 +2,18 @@ package main
 
 import (
 	"log"
+	"os"
 
-	"github.com/myrachanto/Loader/cmd/routes"
+	"github.com/myrachanto/respon/cmd"
+	// "github.com/myrachanto/respon/src/routes"
 )
 
 func init() {
 	log.SetPrefix("tag microservice ")
 }
 func main() {
-	log.Println("Server started")
-	routes.ApiLoader()
+	defer os.Exit(0)
+	cli := cmd.CommandLine{}
+	cli.Run()
+	// routes.ApiLoader()
 }

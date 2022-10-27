@@ -1,16 +1,17 @@
-module github.com/myrachanto/Loader
+module github.com/myrachanto/respon
 
 go 1.19
 
 require (
 	github.com/joho/godotenv v1.4.0
-	github.com/labstack/echo/v4 v4.9.0
+	github.com/labstack/echo/v4 v4.9.1
+	github.com/myrachanto/Loader v0.0.0-20221006060630-548557b985d8
 	github.com/myrachanto/erroring v0.0.0-20220425070608-334baf6eff74
 )
 
 require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
-	github.com/labstack/gommon v0.3.1 // indirect
+	github.com/labstack/gommon v0.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.11 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
