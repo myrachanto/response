@@ -25,12 +25,14 @@ func (cli *CommandLine) validateArgs() {
 }
 
 func (cli *CommandLine) getulr(urls string) {
-	fmt.Println("----------------------------step 4")
+	// fmt.Println("----------------------------step 4")
 	if len(urls) == 0 {
 		log.Panic("URLS is not Valid")
 	}
-	fmt.Println("----------------------------")
-	res := load.LoadService.GetURL(urls)
+	// fmt.Println("----------------------------")
+	loader := load.NewloadService(load.NewloadRepo())
+	res := loader.GetURL(urls)
+	// res := load.LoadService.GetURL(urls)
 	for _, response := range res {
 		fmt.Printf(" %s: has the size of %d \n", response.Url, response.Size)
 	}

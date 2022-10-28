@@ -23,8 +23,10 @@ func NewloadService(repository LoadRepoInterface) LoadServiceInterface {
 func (service *loadService) GetURL(url string) []Load {
 	if strings.Contains(url, ",") {
 		urls := strings.Split(url, ",")
-		return Repo.GetURL(urls)
+		// return Repo.GetURL(urls)
+		return service.repo.GetURL(urls)
 	}
 	urls := strings.Split(url, " ")
-	return Repo.GetURL(urls)
+	// return Repo.GetURL(urls)
+	return service.repo.GetURL(urls)
 }
